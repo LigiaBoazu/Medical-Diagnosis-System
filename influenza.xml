@@ -1,0 +1,60 @@
+<BayesianNetwork>
+    <network name="InfluenzaNetwork">
+        <variables>
+            <variable name="Influenza" values="True, False" />
+            <variable name="Fever" values="True, False" />
+            <variable name="SoreThroat" values="True, False" />
+            <variable name="Bronchitis" values="True, False" />
+            <variable name="Coughing" values="True, False" />
+            <variable name="Wheezing" values="True, False" />
+            <variable name="Smokes" values="True, False" />
+        </variables>
+
+        <cpds>
+            <cpd variable="Influenza">
+                <probabilities>
+                    <probability>0.99</probability>
+                    <probability>0.01</probability>
+                </probabilities>
+            </cpd>
+            <cpd variable="Fever" parents="Influenza">
+                <probabilities>
+                    <probability>0.95, 0.05</probability>
+                    <probability>0.2, 0.8</probability>
+                </probabilities>
+            </cpd>
+            <cpd variable="SoreThroat" parents="Influenza">
+                <probabilities>
+                    <probability>0.9, 0.1</probability>
+                    <probability>0.3, 0.7</probability>
+                </probabilities>
+            </cpd>
+            <cpd variable="Bronchitis" parents="Influenza, Smokes">
+                <probabilities>
+                    <probability>0.8, 0.2</probability>
+                    <probability>0.3, 0.7</probability>
+                    <probability>0.6, 0.4</probability>
+                    <probability>0.1, 0.9</probability>
+                </probabilities>
+            </cpd>
+            <cpd variable="Coughing" parents="Bronchitis">
+                <probabilities>
+                    <probability>0.9, 0.1</probability>
+                    <probability>0.2, 0.8</probability>
+                </probabilities>
+            </cpd>
+            <cpd variable="Wheezing" parents="Bronchitis">
+                <probabilities>
+                    <probability>0.85, 0.15</probability>
+                    <probability>0.2, 0.8</probability>
+                </probabilities>
+            </cpd>
+            <cpd variable="Smokes">
+                <probabilities>
+                    <probability>0.7</probability>
+                    <probability>0.3</probability>
+                </probabilities>
+            </cpd>
+        </cpds>
+    </network>
+</BayesianNetwork>
